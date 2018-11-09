@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 
 import com.view.adapter.MainAdapter;
+import com.view.adapter.OnMultipleLayoutClickListener;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     MainAdapter adapter = new MainAdapter(this);
     rv.setAdapter(adapter);
 
-    adapter.setOnItemClickListener(new MainAdapter.OnMultipleLayoutClickListener() {
+    adapter.setOnItemClickListener(new OnMultipleLayoutClickListener() {
       @Override
       public void onViewPagerItemClick(View view, int position) {
         Log.e("广告的点击事件", "onViewPagerItemClick: " + position);
