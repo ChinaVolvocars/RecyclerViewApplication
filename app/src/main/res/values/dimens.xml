@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-
   <dimen name="sp_0">0sp</dimen>
   <dimen name="sp_1">1sp</dimen>
   <dimen name="sp_2">2sp</dimen>
@@ -203,5 +201,4 @@
   <dimen name="dp_97">97dp</dimen>
   <dimen name="dp_98">98dp</dimen>
   <dimen name="dp_99">99dp</dimen>
-
 </resources>

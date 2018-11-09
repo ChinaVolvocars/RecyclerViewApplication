@@ -15,6 +15,8 @@ import java.util.ArrayList;
 
 public class HomeAdvAdapter extends PagerAdapter {
 
+  private OnItemClickListener listener;
+
   private Context context;
   private final LayoutInflater layoutInflater;
   private ArrayList<String> pages = new ArrayList<>();
@@ -32,7 +34,7 @@ public class HomeAdvAdapter extends PagerAdapter {
   @NonNull
   @Override
   public Object instantiateItem(@NonNull ViewGroup container, final int position) {
-    View itemView = layoutInflater.inflate(R.layout.item_home_adv_new, container, false);
+    View itemView = layoutInflater.inflate(R.layout.item_home_adv, container, false);
     container.addView(itemView);
     // Find and populate data into the page (i.e set the image)
     RoundedImageView image = (RoundedImageView) itemView.findViewById(R.id.imageView);
@@ -55,7 +57,7 @@ public class HomeAdvAdapter extends PagerAdapter {
 
   @Override
   public int getCount() {
-    return pages == null ? 0 : pages.size();
+    return null == pages ? 0 : pages.size();
   }
 
 
@@ -67,13 +69,6 @@ public class HomeAdvAdapter extends PagerAdapter {
   @Override
   public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
     container.removeView((View) object);
-  }
-
-
-  private OnItemClickListener listener;
-
-  public interface OnItemClickListener {
-    void onItemClick(View view, int position);
   }
 
   public void setOnItemClickListener(OnItemClickListener listener) {

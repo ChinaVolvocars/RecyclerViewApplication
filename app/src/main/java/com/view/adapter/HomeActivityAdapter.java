@@ -18,6 +18,7 @@ import butterknife.ButterKnife;
 
 public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapter.HomeActivityViewHolder> {
 
+  private OnItemClickListener listener;
 
   private Context context;
   private final LayoutInflater layoutInflater;
@@ -35,7 +36,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
   @Override
   public HomeActivityViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new HomeActivityViewHolder(layoutInflater.inflate(R.layout.item_activity_new, parent, false));
+    return new HomeActivityViewHolder(layoutInflater.inflate(R.layout.item_activity, parent, false));
   }
 
   @Override
@@ -60,7 +61,7 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
 
   @Override
   public int getItemCount() {
-    return pages.size();
+    return null == pages ? 0 : pages.size();
   }
 
   public class HomeActivityViewHolder extends RecyclerView.ViewHolder {
@@ -71,12 +72,6 @@ public class HomeActivityAdapter extends RecyclerView.Adapter<HomeActivityAdapte
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-  private OnItemClickListener listener;
-
-  public interface OnItemClickListener {
-    void onItemClick(View view, int position);
   }
 
   public void setOnItemClickListener(OnItemClickListener listener) {

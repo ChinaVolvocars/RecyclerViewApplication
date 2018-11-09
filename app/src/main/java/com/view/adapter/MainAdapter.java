@@ -15,6 +15,7 @@ import com.view.R;
 
 import java.util.ArrayList;
 
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -60,17 +61,17 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     LayoutInflater inflater = LayoutInflater.from(parent.getContext());
     switch (viewType) {
       case VIEWTYPE_BALANCE:
-        return new BalanceViewHolder(inflater.inflate(R.layout.layout_home_balance_new, parent, false));
+        return new BalanceViewHolder(inflater.inflate(R.layout.layout_home_balance, parent, false));
       case VIEWTYPE_FUNCTION:
-        return new FunctionViewHolder(inflater.inflate(R.layout.layout_home_function_new, parent, false));
+        return new FunctionViewHolder(inflater.inflate(R.layout.layout_home_function, parent, false));
       case VIEWTYPE_ADV:
-        return new AdvViewHolder(inflater.inflate(R.layout.layout_home_adv_new, parent, false));
+        return new AdvViewHolder(inflater.inflate(R.layout.layout_home_adv, parent, false));
       case VIEWTYPE_OPERATING_INCOME:
-        return new OperatingIncomeViewHolder(inflater.inflate(R.layout.layout_home_operating_income_new, parent, false));
+        return new OperatingIncomeViewHolder(inflater.inflate(R.layout.layout_home_operating_income, parent, false));
       case VIEWTYPE_SERVICE:
-        return new ServiceViewHolder(inflater.inflate(R.layout.layout_home_service_new, parent, false));
+        return new ServiceViewHolder(inflater.inflate(R.layout.layout_home_service, parent, false));
       case VIEWTYPE_ACTIVITY:
-        return new ActivityViewHolder(inflater.inflate(R.layout.layout_home_activity_new, parent, false));
+        return new ActivityViewHolder(inflater.inflate(R.layout.layout_home_activity, parent, false));
       default:
         return null;
     }
@@ -160,11 +161,10 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       indicator.setViewPager(loopViewPager);
       loopViewPager.setBoundaryCaching(false);
 
-      adapter.setOnItemClickListener(new HomeAdvAdapter.OnItemClickListener() {
+      adapter.setOnItemClickListener(new OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
-          Log.e("广告点击事件", "onItemClick: " + position);
-          if (listener != null) listener.onViewPagerItemClick(view, position);
+          if (null != listener) listener.onViewPagerItemClick(view, position);
         }
       });
 
@@ -188,7 +188,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       pages.add("https://pic4.zhimg.com/80/v2-84c93abead7d8744422af35167aeeb2b_hd.jpg");
       adapter.setPages(pages);
 
-      adapter.setOnItemClickListener(new HomeServiceAdapter.OnItemClickListener() {
+      adapter.setOnItemClickListener(new OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
           Log.e("服务点击事件", "onItemClick: " + position);
@@ -211,7 +211,7 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
       pages.add("https://pic4.zhimg.com/80/v2-84c93abead7d8744422af35167aeeb2b_hd.jpg");
       adapter.setPages(pages);
 
-      adapter.setOnItemClickListener(new HomeActivityAdapter.OnItemClickListener() {
+      adapter.setOnItemClickListener(new OnItemClickListener() {
         @Override
         public void onItemClick(View view, int position) {
           Log.e("活动点击事件", "onItemClick: " + position);
@@ -307,20 +307,9 @@ public class MainAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
   }
 
 
-  private OnItemClickListener listener;
+  private OnMultipleLayoutClickListener listener;
 
-  public interface OnItemClickListener {
-    void onViewPagerItemClick(View view, int position);
-
-    void onServiceItemClick(View view, int position);
-
-    void onActivityItemClick(View view, int position);
-
-    void onOtherItemClick(View view, String tag);
-
-  }
-
-  public void setOnItemClickListener(OnItemClickListener listener) {
+  public void setOnItemClickListener(OnMultipleLayoutClickListener listener) {
     this.listener = listener;
   }
 

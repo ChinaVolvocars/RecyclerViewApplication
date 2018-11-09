@@ -26,10 +26,11 @@ public class MainActivity extends AppCompatActivity {
     rv.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
     rv.setHasFixedSize(true);
 
+
     MainAdapter adapter = new MainAdapter(this);
     rv.setAdapter(adapter);
 
-    adapter.setOnItemClickListener(new MainAdapter.OnItemClickListener() {
+    adapter.setOnItemClickListener(new MainAdapter.OnMultipleLayoutClickListener() {
       @Override
       public void onViewPagerItemClick(View view, int position) {
         Log.e("广告的点击事件", "onViewPagerItemClick: " + position);

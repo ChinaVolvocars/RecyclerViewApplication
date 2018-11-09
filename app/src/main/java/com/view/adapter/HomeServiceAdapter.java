@@ -18,6 +18,8 @@ import butterknife.ButterKnife;
 
 public class HomeServiceAdapter extends RecyclerView.Adapter<HomeServiceAdapter.HomeServiceViewHolder> {
 
+  private OnItemClickListener listener;
+
   private Context context;
   private final LayoutInflater layoutInflater;
   private ArrayList<String> pages = new ArrayList<>();
@@ -34,7 +36,7 @@ public class HomeServiceAdapter extends RecyclerView.Adapter<HomeServiceAdapter.
 
   @Override
   public HomeServiceViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-    return new HomeServiceViewHolder(layoutInflater.inflate(R.layout.item_service_new, parent, false));
+    return new HomeServiceViewHolder(layoutInflater.inflate(R.layout.item_service, parent, false));
   }
 
   @Override
@@ -68,13 +70,6 @@ public class HomeServiceAdapter extends RecyclerView.Adapter<HomeServiceAdapter.
       super(itemView);
       ButterKnife.bind(this, itemView);
     }
-  }
-
-
-  private OnItemClickListener listener;
-
-  public interface OnItemClickListener {
-    void onItemClick(View view, int position);
   }
 
   public void setOnItemClickListener(OnItemClickListener listener) {
